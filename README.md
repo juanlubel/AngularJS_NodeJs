@@ -8,6 +8,7 @@
     |   |-/db
     |   |-/model
     |   |-/routes
+    |   |-.env
     |   |-index.js
     |   |-package.json
     |   |-swagger.json
@@ -26,10 +27,16 @@
 
 ## Client
 
+/scr/client/npm i
+/src/client/npm run build
+
 Webpack
 
 
 ## Server
+
+/src/server/npm i
+/src/server/npm run start
 
 node.js
 
