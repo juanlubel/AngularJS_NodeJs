@@ -1,0 +1,11 @@
+{
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {},
+  "paths": {
+  }
+}

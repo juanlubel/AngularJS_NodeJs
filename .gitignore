@@ -1,9 +1,10 @@
-.env
+src/server/.env
 .idea
 package-lock.json
 node_modules
-src/backend/node_modules
-src/backend/package-lock.json
+.env
+src/server/node_modules
+src/server/package-lock.json
 src/frontend/node_modules
 src/frontend/package-lock.json
 package-lock.json

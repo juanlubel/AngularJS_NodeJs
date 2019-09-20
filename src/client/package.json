@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "build" : "webpack -d --watch --color",
     "start": "webpack-dev-server"
   },
   "author": "",
