@@ -1,33 +1,29 @@
 'use strict'
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const app = express()
-const path = require('path')
+const app = require('./server')
+const print = require('./utils/print')
+const db = require('./db')
 const swaggerUi = require('swagger-ui-express')
-
+const routes = require('./routes')
 require('dotenv').config()
 
+const host = process.env.API_HOST
 const port = process.env.API_PORT || 3001
-const route = process.env.API_HOST
-const main_path = path.join(__dirname, '../../')
+
 const swaggerDocument = require('./swagger.json')
+swaggerDocument.host=host + port
 
-swaggerDocument.host=route + port
-
-const database = process.env.DB_HOST + process.env.DB_PORT + process.env.DB_NAME
-
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-app.use('/static', express.static(main_path + '/build'))
 app.use('/api_docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-
-mongoose.connect(database,
-    (err, res) => {
-        if (err) throw err
-        console.log('Conectado')
-        app.listen(port, () => {
-            console.log(`API Rest => http://localhost:${port}`)
-        })
+/*app.use('api', routes)*/
+async function main() {
+    try {
+    await db()
+    await app.listen(port, () => {
+        print.beauty(host + port, 'yellow')
     })
+    } catch (e) {
+        console.log(e)
+    }
+
+}
+
+main()

@@ -2,9 +2,9 @@ src/server/.env
 .idea
 package-lock.json
 node_modules
+.env
 src/server/node_modules
 src/server/package-lock.json
 src/frontend/node_modules
 src/frontend/package-lock.json
-package-lock.json
 yarn.lock
