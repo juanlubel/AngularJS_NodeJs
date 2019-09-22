@@ -25,6 +25,8 @@
     |-index.html
 ``` 
 
+> Remenber: git config --local remote.origin.ulr "your new repositori url"
+
 ## Client
 
 /scr/client/npm i
