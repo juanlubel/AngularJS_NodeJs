@@ -1,0 +1,34 @@
+{
+    "variables": [],
+    "info": {
+        "name": "test",
+        "_postman_id": "82108e7f-8596-42c5-9228-497e09d00a89",
+        "description": "A set of `POST` requests to upload files as form data fields",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Form data upload",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                        "console.log('hola pondejar')"
+                        ]
+                    }
+                }
+            ],
+            "request": {
+                "url": "htto://localhost:3000/api/items",
+                "method": "GET",
+                "header": [],
+                "body": {
+                },
+                "description": "Uploads a file as a form data field to `https://echo.getpostman.com/post` via a `POST` request."
+            },
+            "response": []
+        }
+    ]
+}

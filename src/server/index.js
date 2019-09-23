@@ -1,7 +1,7 @@
 'use strict'
+const db = require('./db')
 const app = require('./server')
 const print = require('./utils/print')
-const db = require('./db')
 const swaggerUi = require('swagger-ui-express')
 const routes = require('./routes')
 require('dotenv').config()

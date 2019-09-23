@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon . ",
-    "test": "node ./test/jasmine.js; nodemon ."
+    "test": "node ./test/jasmine.js; nodemon .",
+    "newman"  : "newman run sample-collection.json"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.1.0",
+    "newman": "^4.5.4",
     "nodemon": "^1.19.2",
     "webpack-dev-server": "^3.8.1",
     "webpack-node-externals": "^1.7.2"
