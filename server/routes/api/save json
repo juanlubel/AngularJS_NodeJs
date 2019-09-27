@@ -1,0 +1,27 @@
+[
+          {
+            "name": "from",
+            "in": "formData",
+            "default": "juanluis.belda@gmail.com",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subject",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "text",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          }
+        ]

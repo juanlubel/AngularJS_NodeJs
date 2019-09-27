@@ -1,0 +1,28 @@
+<div class="contact-page">
+    <h1>{{$ctrl.title}}</h1>
+
+    <div id="after_submit"></div>
+    <form id="contact_form" name="contact_form">
+        <div class="row">
+            <label class="required" for="name">Your name:</label><br />
+            <input id="name" class="input" name="name" ng-model="$ctrl.email.subject" type="text" value="" size="30" /><br />
+            <span ng-show="contact_form.email.subject.$error.required && (contact_form.email.subject.$dirty || contact_form.email.subject.$touched)">Enter a name</span>
+            <span ng-show="contact_form.email.subject.$error.minlength || contact_form.email.subject.$error.maxlength && (contact_form.email.subject.$dirty || contact_form.email.subject.$touched)">Enter between 3 and 20 characters</span>
+        </div>
+        <div class="row">
+            <label class="required" for="email">Your email:</label><br />
+            <input id="email" class="input" name="email" ng-model="$ctrl.email.to" type="text" value="" size="30" /><br />
+            <span id="email_validation" class="error_message"></span>
+        </div>
+        <div class="row">
+            <label class="required" for="message">Your message:</label><br />
+            <textarea id="message" class="input" name="text" ng-model="$ctrl.email.text" rows="7" cols="30"></textarea><br />
+            <span id="message_validation" class="error_message"></span>
+        </div>
+
+        <button id="submit_button"  ng-click="$ctrl.send()">Enviar</button>
+<!--        <input class="btn btn-primary pull-right" type="submit" id="submitBtn" name="submit" value="Send"
+               ng-show="contactForm.inputName.$valid && contactForm.inputMail.$valid && contactForm.inputSubject.$modelValue && contactForm.inputMessage.$valid && $ctrl.showButton"
+               ng-click="$ctrl.messageContact()"/>-->
+    </form>
+</div>
