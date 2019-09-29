@@ -10,16 +10,17 @@ const host = process.env.API_HOST
 const port = process.env.API_PORT || 3001
 
 const swaggerDocument = require('./swagger.json')
-swaggerDocument.host=host + port
+swaggerDocument.host = `localhost:${port}`
 
-app.use('/api_docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use('/api_docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
 /*app.use('api', routes)*/
 async function main() {
     try {
-    await db()
-    await app.listen(port, () => {
-        print.beauty(host + port, 'yellow')
-    })
+        await db.connect()
+        await app.listen(port, () => {
+            print.beauty(host + port, 'yellow')
+        })
     } catch (e) {
         console.log(e)
     }

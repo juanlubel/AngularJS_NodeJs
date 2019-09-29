@@ -1,9 +1,5 @@
 {
-  "host": "0.0.0.0:3000",
   "basePath": "/api",
-  "schemes": [
-    "http"
-  ],
   "produces": [
     "application/json"
   ],
@@ -24,19 +20,19 @@
     }
   },
   "paths": {
-    "/items": {
+    "/hotels": {
       "get": {
         "summary": "Show All Items",
         "description": "Show All Items",
         "tags": [
-          "Items"
+          "hotels"
         ],
         "operationId": "ShowAllItems",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/item"
+              "$ref": "#/definitions/hotel"
             }
           },
           "500": {
@@ -45,22 +41,85 @@
         }
       },
       "post": {
-        "summary": "Items",
-        "description": "Create an Item",
+        "summary": "Create an Hotel",
+        "description": "Create an Hotel",
         "tags": [
-          "Items"
+          "hotels"
         ],
         "parameters": [
           {
-            "name": "name",
-            "in": "formData",
-            "required": false,
-            "type": "string"
+            "in": "body",
+            "name": "hotel",
+            "schema": {
+              "$ref": "#/definitions/hotel"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "Todo ok"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/hotels/{id}": {
+      "delete": {
+        "summary": "",
+        "operationId": "getHotelById",
+        "tags": [
+          "hotels"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the hotel",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo ok",
+            "schema": {
+              "$ref": "#/definitions/hotel"
+            }
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "put": {
+        "summary": "",
+        "operationId": "",
+        "tags": [
+          "hotels"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "hotel",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/hotel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo ok",
+            "schema": {
+              "$ref": "#/definitions/hotel"
+            }
           },
           "500": {
             "description": "Unexpected error"
@@ -79,7 +138,7 @@
             "in": "body",
             "name": "email",
             "schema": {
-              "$ref": "#/definitions/mail"
+              "$ref": "#/definitions/hotel"
             }
           }
         ],
@@ -95,14 +154,23 @@
     }
   },
   "definitions": {
-    "item": {
+    "hotel": {
       "type": "object",
       "properties": {
+        "slug": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
-        "sell_price": {
-          "type": "number"
+        "location": {
+          "type": "string"
+        },
+        "img": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
         }
       }
     },

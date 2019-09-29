@@ -15,4 +15,15 @@ function connect () {
         })
 }
 
-module.exports = connect
+function clearData(collection) {
+    mongoose.connect(database).dropCollection(collection, (err, res) => {
+        if (err) throw err
+        print.beauty(`${collection} is cleared`, 'red', 'DE Server')
+        }
+
+    )}
+
+module.exports = {
+    connect,
+    clearData
+}

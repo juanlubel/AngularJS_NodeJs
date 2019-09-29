@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-router.use('/items', require('./hotels'));
+router.use('/hotels', require('./hotels'));
 router.use('/send_mail', require('./mailer'))
 
 router.use(function(err, req, res, next){
