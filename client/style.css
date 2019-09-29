@@ -1,0 +1,10 @@
+[sidebarjs-container] {
+    width: 85%;              /* will be 90% of view */
+    max-width: 450px;        /* if 90% width is greater than 500px, stop his size */
+}
+
+.content-slider-tab {
+    height: 100%;
+    background-color: #87c0cd;
+    align-items: center;
+}

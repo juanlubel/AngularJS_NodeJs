@@ -1,4 +1,5 @@
 import angular from 'angular'
+import './style.css'
 
 /*Import dependencies*/
 import 'angular-ui-router'
@@ -11,6 +12,7 @@ import ngMaterials from 'angular-material'
 /*Import config*/
 import appConfig from './config/app.config'
 import appRun from './config/app.run'
+
 
 /*Import modules*/
 import './layout'
