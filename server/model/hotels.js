@@ -1,29 +1,27 @@
 'use strict'
 
 const mongoose = require('mongoose')
+const slug = require('mongoose-slug-generator')
+mongoose.plugin(slug)
+
 const Schema = mongoose.Schema
-const slug = require('slug')
+
+// let random = Math.random().toString()
 
 let HotelSchema = Schema({
-    slug: {type: String, lowercase: true, unique: true},
     name: String,
+    slug: {type: String, slug: ["name", Math.random().toString()], lowercase: true, unique: true},
     location: String,
     img: String,
     type: String,
     components: Array,
-    rooms: Array
+    rooms: Array,
+    updatedAt: Date
 })
 
-
-/*HotelSchema.pre('validate', (next) => {
-    if(!this.slug)  {
-        this.slugify()
-    }
-    next()
+/*HotelSchema.pre('update', () => {
+    console.log('updateAt')
+    this.update({},{ $set: { updatedAt: new Date() } })
 })*/
-
-HotelSchema.methods.slugify = () => {
-    this.slug = slug(this.name)
-}
 
 module.exports = mongoose.model('Hotel', HotelSchema)

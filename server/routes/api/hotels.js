@@ -1,6 +1,5 @@
 const app = require('express').Router()
 const Hotel = require('../../model/hotels')
-const db = require('../../db')
 
 
 app.get('/', (req, res) => {
@@ -12,16 +11,26 @@ app.get('/', (req, res) => {
 
 })
 
+app.get('/:slug', (req, res) => {
+    console.log('get item by slug')
+    const slug = req.params.slug
+    Hotel.findOne({slug:slug}, (err, item) => {
+        if (!item) return res.status(500).send('item not find')
+        res.status(200).json(items)
+    })
+
+})
+
 app.post('/', (req, res) => {
     console.log('post item')
-    let item = new Hotel(req.body)
-
-    item.slugify()
+    const item = new Hotel(req.body)
+    console.log(item)
     item.save((err, itemStored) => {
         if (!itemStored) return res.status(500).json({
             msg: "Error on insert Hotel",
-            mongoMsg: err.errmsg
+            mongoMsg: err
         })
+
         res.status(200).json(itemStored)
     })
 
@@ -59,7 +68,7 @@ app.put('/:id', (req, res) => {
     })
 })
 
-app.get('/clear', (req, res) => {
+app.get('/test/clear', (req, res) => {
     console.log('clear data')
 /*    db.clearData('hotel')*/
     Hotel.deleteMany({}, (err, result) => {
@@ -69,7 +78,7 @@ app.get('/clear', (req, res) => {
     })
 })
 
-app.get('/dommies', (req, res) => {
+app.get('/test/dommies', (req, res) => {
     console.log('dommies')
     dommies()
 })
@@ -81,7 +90,6 @@ function dommies() {
 
     for (let i = 0; i <= 10; i++) {
         let hotel = {
-            slug : i,
             name : names[Math.floor(Math.random() * names.length)],
             location : "Valencia",
             type : types[Math.floor(Math.random() * types.length)],

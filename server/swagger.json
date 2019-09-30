@@ -65,6 +65,35 @@
         }
       }
     },
+    "/hotels/{slug}": {
+      "get": {
+        "summary": "",
+        "operationId": "getHotelBySlug",
+        "tags": [
+          "hotels"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Slug of the hotel",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/hotel"
+            }
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
     "/hotels/{id}": {
       "delete": {
         "summary": "",
