@@ -11,4 +11,7 @@ serviceModule.service('Mailer', MailerService)
 import ToastrService from './toastr.service'
 serviceModule.service('Toastr', ToastrService)
 
+import HotelsProvider from "./hotels.service";
+serviceModule.service('Hotels', HotelsProvider)
+
 export default serviceModule
