@@ -10,7 +10,7 @@ const Schema = mongoose.Schema
 
 let HotelSchema = Schema({
     name: String,
-    slug: {type: String, slug: ["name", Math.random().toString()], lowercase: true, unique: true},
+    slug: {type: String, slug: ["name", (Math.random() * Math.pow(36, 6) | 0).toString(36)], lowercase: true, unique: true},
     location: String,
     img: String,
     type: String,

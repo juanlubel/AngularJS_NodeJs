@@ -18,7 +18,7 @@ function connect () {
 function clearData(collection) {
     mongoose.connect(database).dropCollection(collection, (err, res) => {
         if (err) throw err
-        print.beauty(`${collection} is cleared`, 'red', 'DE Server')
+        print.beauty(`${collection} is cleared`, 'red', 'DB Server')
         }
 
     )}
