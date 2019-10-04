@@ -16,7 +16,7 @@ app.get('/:slug', (req, res) => {
     const slug = req.params.slug
     Hotel.findOne({slug:slug}, (err, item) => {
         if (!item) return res.status(500).send('item not find')
-        res.status(200).json(items)
+        res.status(200).json(item)
     })
 
 })
