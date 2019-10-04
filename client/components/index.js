@@ -8,4 +8,10 @@ componentsModule.component('sideBar', sidebarComponent)
 import hotelListComponent from "./hotels/hotelList.component";
 componentsModule.component('hotelList', hotelListComponent)
 
+import hotelItemComponent from "./hotels/hotelItem.component";
+componentsModule.component('hotelItem', hotelItemComponent)
+
+import favoriteButtonComponent from "./buttons/favoriteButton.component";
+componentsModule.component('favoriteButton', favoriteButtonComponent)
+
 export default componentsModule

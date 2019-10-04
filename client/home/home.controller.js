@@ -4,6 +4,7 @@ class HomeCtrl {
         this._hotelsProvider = Hotels
         this.hotels = []
         this.hotel = null
+        this.loadHotels()
     }
 
     loadHotels () {

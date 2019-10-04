@@ -20,6 +20,7 @@ import './contact'
 import './home'
 import './services'
 import './components'
+import './hotels'
 
 const requires = [
     'ui.router',
@@ -28,6 +29,7 @@ const requires = [
     'app.contact',
     'app.services',
     'app.components',
+    'app.hotel',
     toastr,
     ngSidebarJs,
     // ngAnimate,

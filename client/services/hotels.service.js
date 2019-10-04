@@ -13,8 +13,13 @@ export default class HotelsProvider {
             .catch((error) => error)
     }
 
-    getBySlug() {
-
+    getBySlug(slug) {
+        console.log(slug)
+        return this._$http.get(
+            `${this.route}/hotels/${slug}`
+        )
+            .then((response) => response)
+            .catch((error) => error)
     }
 
     create() {
