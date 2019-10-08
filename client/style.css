@@ -11,5 +11,10 @@
 
 .hotel-item {
     border: solid 3px #113f67;
+    flex: 1;
+}
 
+.hotels-container {
+    flex-direction: column;
+    display: flex;
 }

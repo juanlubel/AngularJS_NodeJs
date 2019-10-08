@@ -14,4 +14,7 @@ componentsModule.component('hotelItem', hotelItemComponent)
 import favoriteButtonComponent from "./buttons/favoriteButton.component";
 componentsModule.component('favoriteButton', favoriteButtonComponent)
 
+import showAuth from './show-auth.directive'
+componentsModule.directive('showAuth', showAuth)
+
 export default componentsModule

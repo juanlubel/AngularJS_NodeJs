@@ -3,7 +3,7 @@ const db = require('./db')
 const app = require('./server')
 const print = require('./utils/print')
 const swaggerUi = require('swagger-ui-express')
-const routes = require('./routes')
+/*const routes = require('./routes')*/
 require('dotenv').config()
 
 const host = process.env.API_HOST
