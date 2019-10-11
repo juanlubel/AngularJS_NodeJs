@@ -14,6 +14,9 @@ componentsModule.component('hotelItem', hotelItemComponent)
 import favoriteButtonComponent from "./buttons/favoriteButton.component";
 componentsModule.component('favoriteButton', favoriteButtonComponent)
 
+import statusUserComponent from "./status/statusUser.component";
+componentsModule.component('statusUser', statusUserComponent)
+
 import showAuth from './show-auth.directive'
 componentsModule.directive('showAuth', showAuth)
 

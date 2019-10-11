@@ -17,15 +17,22 @@
     "express": "^4.17.1",
     "mongoose": "^5.7.1",
     "mongoose-slug-generator": "^1.0.4",
+    "mongoose-unique-validator": "^2.0.3",
     "nodemailer-sendgrid-transport": "^0.2.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "socket.io": "^2.3.0",
     "swagger-ui-express": "^4.1.1"
   },
   "devDependencies": {
     "dotenv": "^8.1.0",
+    "express-jwt": "^5.3.1",
+    "express-session": "^1.17.0",
+    "jsonwebtoken": "^8.5.1",
     "newman": "^4.5.4",
     "nodemailer": "^6.3.0",
     "nodemon": "^1.19.2",
+    "passport-github": "^1.1.0",
     "slug": "^1.1.0",
     "webpack-dev-server": "^3.8.1",
     "webpack-node-externals": "^1.7.2"

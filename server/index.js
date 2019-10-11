@@ -5,6 +5,7 @@ const print = require('./utils/print')
 const swaggerUi = require('swagger-ui-express')
 /*const routes = require('./routes')*/
 require('dotenv').config()
+require('./config/passport')
 
 const host = process.env.API_HOST
 const port = process.env.API_PORT || 3001

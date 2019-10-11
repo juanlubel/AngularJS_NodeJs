@@ -1,5 +1,5 @@
 const app = require('express').Router()
-const Hotel = require('../../model/hotels')
+const Hotel = require('../../model/Hotels')
 
 
 app.get('/', (req, res) => {

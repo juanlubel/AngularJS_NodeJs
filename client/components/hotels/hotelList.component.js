@@ -2,9 +2,9 @@ class HotelListCtrl {
 
     constructor() {
         'ngInject';
-        this.$onChanges = function() {
-            console.log(this.hotels);
-        }
+/*        this.$onChanges = function() {
+
+        }*/
     }
 
 }

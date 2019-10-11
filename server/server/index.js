@@ -4,8 +4,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const router = require('./../routes')
+const passport = require('passport')
+const session = require('express-session')
 
 const main_path = path.join(__dirname, '../')
+
+app.use(session({ secret: 'hotelium', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -17,6 +21,8 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(router)
 

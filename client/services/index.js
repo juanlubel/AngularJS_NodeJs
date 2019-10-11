@@ -17,4 +17,7 @@ serviceModule.service('Hotels', HotelsProvider)
 import UserService from "./user.service";
 serviceModule.service('User', UserService)
 
+import JWT from "./jwt.service";
+serviceModule.service('JWT', JWT)
+
 export default serviceModule
