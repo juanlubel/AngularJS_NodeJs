@@ -1,0 +1,44 @@
+<div class="container">
+    <div show-auth="false">
+        <a class="md-button md-secondary"
+           ui-sref-active="active"
+           ui-sref="app.register">
+            Register
+        </a>
+        <a class="md-button md-secondary"
+           ui-sref-active="active"
+           ui-sref="app.login">
+            <img ng-src="{{'../../img/icon-user-default.png'}}" height="35" width="35">
+        </a>
+
+    </div>
+
+    <div show-auth="true">
+        <md-menu>
+            <md-button
+                    ng-click="$mdMenu.open($event)"
+            >{{$ctrl.user.username || 'Juanluis'}}
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item>
+                    <md-button
+                            ui-sref-active="active"
+                            ui-sref="app.settings">
+                    Profile</md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>Shop</md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button
+                        class="md-warn"
+                        ng-click="$ctrl.logout()"
+                    >Log Out</md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <a><img ng-src="{{$ctrl.user.image || '../../img/icon-user-default.png'}}" height="42" width="42"/></a>
+    </div>
+
+
+</div>

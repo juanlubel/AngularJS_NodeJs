@@ -1,6 +1,10 @@
-class HotelListComponent {
-    constructor() {
+class HotelListCtrl {
 
+    constructor() {
+        'ngInject';
+/*        this.$onChanges = function() {
+
+        }*/
     }
 
 }
@@ -10,7 +14,7 @@ let hotelListComponent = {
     bindings: {
         hotels: '<'
     },
-    controller: HotelListComponent,
+    controller: HotelListCtrl,
     templateUrl: 'components/hotels/hotelList.html'
 }
 

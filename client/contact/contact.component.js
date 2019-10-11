@@ -1,6 +1,5 @@
 class ContactCtrl {
     constructor(Mailer, Toastr) {
-        console.log('hola contact component')
         this.email = {
             subject : '',
             to : '',
@@ -10,10 +9,8 @@ class ContactCtrl {
         this.mailer = Mailer
         this.toastr = Toastr
     }
-
     send() {
         this.mailer.send(this.email).then((response) => {
-            console.log(response)
             this.toastr.show(response.status, response.data.text)
         })
     }

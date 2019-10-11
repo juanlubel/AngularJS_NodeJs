@@ -5,7 +5,6 @@ export default class HotelsProvider {
     }
 
     getAll() {
-        console.log('get All Hotels')
         return this._$http.get(
             `${this.route}/hotels`
         )
@@ -13,8 +12,12 @@ export default class HotelsProvider {
             .catch((error) => error)
     }
 
-    getBySlug() {
-
+    getBySlug(slug) {
+        return this._$http.get(
+            `${this.route}/hotels/${slug}`
+        )
+            .then((response) => response)
+            .catch((error) => error)
     }
 
     create() {

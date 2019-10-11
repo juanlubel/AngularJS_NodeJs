@@ -10,6 +10,7 @@ import ngAria from 'angular-aria'
 import ngMaterials from 'angular-material'
 
 /*Import config*/
+import constants  from './config/app.constants';
 import appConfig from './config/app.config'
 import appRun from './config/app.run'
 
@@ -20,6 +21,9 @@ import './contact'
 import './home'
 import './services'
 import './components'
+import './hotels'
+import './auth'
+import './settings'
 
 const requires = [
     'ui.router',
@@ -28,6 +32,9 @@ const requires = [
     'app.contact',
     'app.services',
     'app.components',
+    'app.hotel',
+    'app.auth',
+    'app.settings',
     toastr,
     ngSidebarJs,
     // ngAnimate,
@@ -36,6 +43,8 @@ const requires = [
 ]
 
 window.app = angular.module('app', requires)
+
+angular.module('app').constant('AppConstants', constants);
 
 angular.module('app').config(appConfig)
 

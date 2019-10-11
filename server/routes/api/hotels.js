@@ -1,5 +1,5 @@
 const app = require('express').Router()
-const Hotel = require('../../model/hotels')
+const Hotel = require('../../model/Hotels')
 
 
 app.get('/', (req, res) => {
@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
 app.get('/:slug', (req, res) => {
     console.log('get item by slug')
     const slug = req.params.slug
-    Hotel.findOne({slug:slug}, (err, item) => {
+    Hotel.findOne({slug: slug}, (err, item) => {
         if (!item) return res.status(500).send('item not find')
-        res.status(200).json(items)
+        res.status(200).json(item)
     })
 
 })
@@ -70,7 +70,7 @@ app.put('/:id', (req, res) => {
 
 app.get('/test/clear', (req, res) => {
     console.log('clear data')
-/*    db.clearData('hotel')*/
+    /*    db.clearData('hotel')*/
     Hotel.deleteMany({}, (err, result) => {
         console.log(err, result)
         if (err) throw res.status(500).json(err)
@@ -90,12 +90,12 @@ function dommies() {
 
     for (let i = 0; i <= 10; i++) {
         let hotel = {
-            name : names[Math.floor(Math.random() * names.length)],
-            location : "Valencia",
-            type : types[Math.floor(Math.random() * types.length)],
-            img : "",
-            components : [],
-            rooms : []
+            name: names[Math.floor(Math.random() * names.length)],
+            location: "Valencia",
+            type: types[Math.floor(Math.random() * types.length)],
+            img: "",
+            components: [],
+            rooms: []
         }
         let item = new Hotel(hotel)
         item.save((err, itemStored) => {

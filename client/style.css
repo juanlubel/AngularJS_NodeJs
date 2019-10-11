@@ -8,3 +8,13 @@
     background-color: #87c0cd;
     align-items: center;
 }
+
+.hotel-item {
+    border: solid 3px #113f67;
+    flex: 1;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}

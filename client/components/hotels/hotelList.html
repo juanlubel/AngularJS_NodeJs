@@ -1,6 +1,5 @@
 <div class="hotel-container">
-    <div class="md-container">
-    <p ng-repeat="hotel in $ctrl.hotels">{{hotel.type}} {{hotel.name}} </p>
+    <div class="md-container hotels-container">
+        <hotel-item ng-repeat="hotel in $ctrl.hotels" hotel="hotel"></hotel-item>
     </div>
-
 </div>
