@@ -1,3 +1,12 @@
-<md-button class="md-icon-button" aria-label="Favorite">
-    <md-icon md-svg-icon="../../img/icons/favorite.svg"></md-icon>
+<md-button
+        aria-label="Favorite"
+        ng-click="$ctrl.submit()"
+>
+    {{$ctrl.hotel.favoritesCount}}
+    <md-icon md-svg-icon="../../img/icons/favorite.svg"
+             ng-class="{
+                'favorite' : $ctrl.hotel.favorited,
+                'nofavorite' : !$ctrl.hotel.favorited
+             }"
+    ></md-icon>
 </md-button>

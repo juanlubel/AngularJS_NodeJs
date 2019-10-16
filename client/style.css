@@ -18,3 +18,12 @@
     display: flex;
     flex-direction: row;
 }
+
+
+.favorite {
+    fill: dodgerblue;
+}
+
+.nofavorite {
+    fill: grey;
+}

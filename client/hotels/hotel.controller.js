@@ -1,5 +1,5 @@
 export default class HotelCtrl {
-    constructor() {
-
+    constructor(hotel) {
+        this.hotel = hotel
     }
 }

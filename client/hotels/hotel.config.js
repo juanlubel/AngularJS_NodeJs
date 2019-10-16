@@ -11,7 +11,7 @@ function HotelConfig($stateProvider) {
                 resolve: {
                     hotel: (Hotels, $state, $stateParams) => {
                         return Hotels.getBySlug($stateParams.slug).then(
-                            (hotel) => hotel,
+                            (hotel) => hotel.data,
                             (err) => $state.go('app.home')
                         )
                     }

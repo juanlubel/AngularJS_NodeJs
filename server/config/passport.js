@@ -48,10 +48,11 @@ passport.use(new GitHubStrategy({
             if (user) {
                 return done(null, user);
             } else {
+                console.log(profile.photos)
                 let user = new User({
                     social: profile.id,
                     username: profile.username,
-                    email: profile.email ? profile.email : 'default@default.com',
+                    email: profile.email ? profile.email : `${profile.username}github@no.valid`,
                     type: "client",
                     image: profile.photos[0].value,
                 });

@@ -14,12 +14,12 @@ class User {
         return this._http.get(
             `${this.route}${route}`,
         ).then((response) => {
-            this._JWT.save(response.data.token);
-            this.current = response.data
+            this._JWT.save(response.data.user.token);
+            this.current = response.data.user
+            this._$state.go('app.home', null, {reload: true});
             return response
         })
             .catch((error) => {
-                console.log('catch', error)
                 this.error = error
                 return error
             })
@@ -37,7 +37,6 @@ class User {
                 return response
             })
             .catch((error) => {
-                console.log('catch', error)
                 this.error = error
                 return error
             })
@@ -64,11 +63,9 @@ class User {
                 }
             }).then(
                 (res) => {
-                    console.log(res)
                     this.current = res.data.user;
                     deferred.resolve(true);
                 },
-
                 (err) => {
                     this._JWT.destroy();
                     deferred.resolve(false);
@@ -108,7 +105,6 @@ class User {
     }
 
     logout() {
-        console.log('log out user service')
         this.current = null;
         this._JWT.destroy();
         this._$state.go(this._$state.$current, null, {reload: true});

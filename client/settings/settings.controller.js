@@ -4,7 +4,7 @@ class SettingsCtrl {
 
     this._User = User;
     this._$state = $state;
-
+    console.log(User.current)
     this.formData = {
       email: User.current.email,
       bio: User.current.bio,

@@ -1,6 +1,21 @@
 const app = require('express').Router()
 const Hotel = require('../../model/Hotels')
+const User = require('../../model/User')
+const auth = require('../auth')
 
+app.param('hotel', function (req, res, next, slug) {
+    Hotel.findOne({slug: slug})
+        .populate('author')
+        .then(function (hotel) {
+            if (!hotel) {
+                return res.sendStatus(404);
+            }
+
+            req.hotel = hotel;
+
+            return next();
+        }).catch(next);
+});
 
 app.get('/', (req, res) => {
     console.log('get item')
@@ -11,13 +26,21 @@ app.get('/', (req, res) => {
 
 })
 
-app.get('/:slug', (req, res) => {
-    console.log('get item by slug')
-    const slug = req.params.slug
-    Hotel.findOne({slug: slug}, (err, item) => {
-        if (!item) return res.status(500).send('item not find')
-        res.status(200).json(item)
-    })
+app.get('/:slug', auth.optional, (req, res) => {
+
+    console.log(req.payload);
+    Promise.all([
+        req.payload ? User.findById(req.payload.id) : null
+    ]).then((user) => {
+            Hotel.findOne({slug: req.params.slug}, (err, item) => {
+                if (!item) return res.status(500).send('item not find')
+                res.status(200).json(item.toJSONFor(user[0]))
+            })
+
+
+        }
+    )
+
 
 })
 
@@ -68,6 +91,30 @@ app.put('/:id', (req, res) => {
     })
 })
 
+app.post('/:hotel/favorite', auth.required, (req, res, next) => {
+    console.log('favorite')
+    User.findById(req.payload.id).then((user) => {
+        if (!user) return res.status(500).send('user not exists')
+        user.favorite(req.hotel._id).then(() => {
+            req.hotel.updateFavoriteCount().then(hotel => {
+                res.status(200).json(hotel)
+            })
+        })
+    })
+})
+
+app.delete('/:hotel/favorite', auth.required, (req, res, next) => {
+    console.log('no favorite')
+    User.findById(req.payload.id).then((user) => {
+        if (!user) return res.status(500).send('user not exists')
+        user.unfavorite(req.hotel._id).then(() => {
+            req.hotel.updateFavoriteCount().then(hotel => {
+                res.status(200).json(hotel)
+            })
+        })
+    })
+})
+
 app.get('/test/clear', (req, res) => {
     console.log('clear data')
     /*    db.clearData('hotel')*/
@@ -103,7 +150,6 @@ function dommies() {
             console.log(itemStored)
         })
     }
-
 }
 
 module.exports = app
