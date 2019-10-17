@@ -1,6 +1,6 @@
 .idea
+.env
 package-lock.json
 node_modules
-server/.env
 yarn.lock
 img
