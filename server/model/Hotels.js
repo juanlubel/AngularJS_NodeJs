@@ -21,7 +21,7 @@ let HotelSchema = Schema({
     location: String,
     img: String,
     type: String,
-    components: Array,
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     rooms: Array,
     favorited: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 })

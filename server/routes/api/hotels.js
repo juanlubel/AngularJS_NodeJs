@@ -1,6 +1,7 @@
 const app = require('express').Router()
 const Hotel = require('../../model/Hotels')
 const User = require('../../model/User')
+const Comment = require('../../model/Comment')
 const auth = require('../auth')
 
 app.param('hotel', function (req, res, next, slug) {
@@ -111,6 +112,36 @@ app.delete('/:hotel/favorite', auth.required, (req, res, next) => {
             req.hotel.updateFavoriteCount().then(hotel => {
                 res.status(200).json(hotel)
             })
+        })
+    })
+})
+
+app.post('/:hotel/comment', auth.required, (req, res, next) => {
+    console.log('add comment')
+    User.findById(req.payload.id).then((user) => {
+        if (!user) return res.status(500).send('user not exists')
+        let comment = new Comment(req.body.comment)
+        comment.hotel = req.hotel
+        comment.user = user
+
+        comment.save().then(async () => {
+            await req.hotel.comments.push(comment)
+            req.hotel.save().then((hotel) => {
+                res.status(200).json({comment: comment.toJSONFor(user)})
+            })
+        })
+    })
+})
+
+app.get('/:hotel/comment', auth.optional, (req, res, next) => {
+    Promise.resolve(req.payload ? User.findById(res.payload.id) : null).then((user) => {
+        req.hotel.populate({
+            path: 'comments',
+            populate: {
+                path: 'author'
+            }
+        }).execPopulate().then(() => {
+            res.status(200).json({comments: req.hotel.comments})
         })
     })
 })
